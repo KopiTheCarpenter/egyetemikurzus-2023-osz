@@ -1,6 +1,6 @@
 # SZTE egyetemi kurzus, 2023 őszi félév házi feleadat repó
 
-Git gyorstalpaló: https://github.com/CsharptutorialHungary/egyetemikurzus-2023-tavasz/blob/main/GitTutorial/Readme.md
+Git gyorstalpaló: https://github.com/CsharptutorialHungary/egyetemikurzus-2023-osz/blob/main/GitTutorial/README.md
 
 ## Követelmények
 
