@@ -57,8 +57,11 @@ Ha idáig megvagy, akkor a Visual Studio-ban megnyitva az SLN fájlodat meg kell
 Ez Visual Studio-ból is megtehető, de parancssrorból a parancs:
 
 ```bash
+git add .
 git commit -m "[leírás]"
 ```
+
+A `git add .` minden módosított fájlt hozzáad a staging könyezethez, ami kommitolásra fog kerülni.
 
 A `"[leírás]"` helyére a kommitod leírása írandó. Fontos, hogy idézőjelekben legyen, illetve jó lenne, ha a leírásnak valami értelmes lenne és az elvégzett munkára utalna, nem csak egy semmit mondó `added files` vagy `asd` lenne.
 
