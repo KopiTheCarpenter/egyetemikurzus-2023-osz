@@ -1,4 +1,5 @@
 ﻿using cke7xe.Model;
+using System.Text.Json;
 
 namespace cke7xe.Controller
 {
@@ -9,6 +10,10 @@ namespace cke7xe.Controller
         {
             return _nextId++;
         }
+        JsonSerializerOptions serializerOptions = new JsonSerializerOptions
+        {
+            WriteIndented = true
+        };
 
         public List<Henger> GenerateDemoHengers(int count)
         {
@@ -25,6 +30,27 @@ namespace cke7xe.Controller
             }
             _nextId = count;
             return ret;
+        }
+
+        public void WriteHengersToFile(List<Henger> hengerek, string workingDirectory, string filename = "hengerek.json")
+        {
+            try
+            {
+                string filePath = Path.Combine(workingDirectory, filename);
+                using (StreamWriter writer = File.CreateText(filePath))
+                {
+                    foreach (var item in hengerek)
+                    {
+                        writer.WriteLine(JsonSerializer.Serialize(item, serializerOptions));
+                    }
+
+                }
+            }
+            catch (IOException e)
+            {
+                //IO Pokemon
+                Console.WriteLine(e.Message);
+            }
         }
     }
 }
