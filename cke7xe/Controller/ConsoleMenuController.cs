@@ -4,6 +4,34 @@ namespace cke7xe.Controller
 {
     public class ConsoleMenuController : IMenuController
     {
+        int MyInputToIntParser(string? input)
+        {
+            try
+            {
+                return int.Parse(input);
+
+            }
+            catch (ArgumentNullException e)
+            {
+                Console.WriteLine(e.Message);
+                return -1;
+            }
+            catch (ArgumentException e)
+            {
+                Console.WriteLine(e.Message);
+                return -2;
+            }
+            catch (FormatException e)
+            {
+                Console.WriteLine(e.Message);
+                return -3;
+            }
+            catch (OverflowException e)
+            {
+                Console.WriteLine(e.Message);
+                return -4;
+            }
+        }
         public bool QuestionWantToGenerateDemoHengers()
         {
             Console.Clear();
@@ -43,6 +71,25 @@ namespace cke7xe.Controller
             else
                 return line;
         }
+        public int Menu()
+        {
+            Console.Clear();
+            Console.WriteLine("0 - Kilépés(Mentés felülírja meglévő fájlt)");
+            Console.WriteLine("10 - Képernyő letakaritása");
+            Console.WriteLine("1 - Henger Hozzáadása");
+            Console.WriteLine("2 - Henger Modosítása");
+            Console.WriteLine("3 - Henger Listázása");
+            Console.WriteLine("4 - Legnagyobb Átmérő megkeresése");
+            Console.WriteLine("5 - Átmérő/darabszám riport készítése");
+            Console.WriteLine("6 - Megadott henger kiirása fájlba(id alapján)");
+            int ret = -1;
+            do
+            {
+                ret = MyInputToIntParser(Console.ReadLine());
+            } while (ret < 0);
+            return ret;
+
+        }
         public Henger MenuCreateHenger()
         {
             {
@@ -59,53 +106,22 @@ namespace cke7xe.Controller
                 return ret;
             }
         }
-
-        public int Menu()
-        {
-            Console.Clear();
-            Console.WriteLine("0 - Kilépés(Mentés felülírja meglévő fájlt)");
-            Console.WriteLine("1 - Henger Hozzáadása");
-            Console.WriteLine("2 - Henger Modosítása");
-            Console.WriteLine("3 - Legnagyobb Átmérő megkeresése");
-            int ret = -1;
-            do
-            {
-                ret = MyInputToIntParser(Console.ReadLine());
-            } while (ret <0);
-            return ret;
-
-        }
-        int MyInputToIntParser(string? input) {
-            try
-            {
-                return int.Parse(input);
-
-            }
-            catch (ArgumentNullException e)
-            {
-                Console.WriteLine(e.Message);
-                return -1;
-            }
-            catch (ArgumentException e)
-            {
-                Console.WriteLine(e.Message);
-                return -2;
-            }
-            catch (FormatException e)
-            {
-                Console.WriteLine(e.Message);
-                return -3;
-            }
-            catch (OverflowException e)
-            {
-                Console.WriteLine(e.Message);
-                return -4;
-            }
-        }
-
-        public Henger MenuUpdateHenger(int id)
+        public Henger MenuUpdateHenger()
         {
             throw new NotImplementedException();
+        }
+
+        public void MenuFindHengerAndWriteToFile(IHengerController hengerController, string workingDirectory)
+        {
+            
+        }
+
+        public void MenuListHengers(List<Henger> hengers)
+        {
+            foreach (var item in hengers)
+            {
+                Console.WriteLine(item);
+            }
         }
     }
 }

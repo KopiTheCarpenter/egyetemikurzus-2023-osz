@@ -3,7 +3,7 @@ using System.Text.Json;
 
 namespace cke7xe.Controller
 {
-    internal class HengerController : IHengerController
+    public class HengerController : IHengerController
     {
         private static int _nextId;
         public static int GetNextId()
@@ -31,7 +31,23 @@ namespace cke7xe.Controller
             _nextId = count;
             return ret;
         }
+        public void WriteSelectedHengerToFile(Henger henger, string workingDirectory)
+        {
+            try
+            {
+                string filePath = Path.Combine(workingDirectory, henger.Megnevezes, ".json");
+                using (StreamWriter writer = File.CreateText(filePath))
+                {
+                    writer.WriteLine(JsonSerializer.Serialize(henger, serializerOptions));
+                }
+            }
+            catch (IOException e)
+            {
+                //IO Pokemon
+                Console.WriteLine(e.Message);
+            }
 
+        }
         public void WriteHengersToFile(List<Henger> hengerek, string workingDirectory, string filename = "hengerek.json")
         {
             try
@@ -69,8 +85,8 @@ namespace cke7xe.Controller
                             string? temp = null;
                             while ((temp = reader.ReadLine()) != "}")
                             {
-                                if(temp != null)
-                                line += temp.Trim();
+                                if (temp != null)
+                                    line += temp.Trim();
                             }
                             line += "}";
                         }
@@ -85,7 +101,7 @@ namespace cke7xe.Controller
                 //IO Pokemon
                 Console.WriteLine(e.Message);
             }
-            if (ret.Count > 0) _nextId = ret.Max(h => h.Id)+1;
+            if (ret.Count > 0) _nextId = ret.Max(h => h.Id) + 1;
             else _nextId = 1;
             return ret;
         }
@@ -99,14 +115,16 @@ namespace cke7xe.Controller
         {
             return hengerek.Max(x => x.Atmero);
         }
-        public void GenerateReportCountByAtmero(List<Henger> hengerek, string workingDirectory, string filename ="CountByAtmeroRiport.txt") {
+        public void GenerateReportCountByAtmero(List<Henger> hengerek, string workingDirectory, string filename = "CountByAtmeroRiport.txt")
+        {
             try
             {
                 string filePath = Path.Combine(workingDirectory, filename);
                 using (StreamWriter writer = File.CreateText(filePath))
                 {
                     foreach (var line in hengerek.GroupBy(h => h.Atmero)
-                        .Select(group => new {
+                        .Select(group => new
+                        {
                             Atmero = group.Key,
                             Count = group.Count()
                         })

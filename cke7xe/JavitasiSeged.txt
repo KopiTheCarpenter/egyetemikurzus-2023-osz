@@ -11,7 +11,9 @@ legyen benne saját immutable type (pl.: record class)
 	--- Model/Henger.cs
 
 legyen benne LINQ segítségével: szűrés(where), csoportosítás(group by), rendezés(order by), agregáció(Pl.: Min(), Max(), First(), FirstOrDefault, Average(), stb...) közül legalább kettő
-	---  
+	--- Find() - Controller/HengerController.cs FindHengerById()
+	--- Max() - Controller/HengerController.cs FindHengerWithBiggestAtmero()
+	--- GroupBy() & OrderBy() - Controller/HengerController.cs GenerateReportCountByAtmero()
 
 legyen benne generikus kollekció (pl.: List<T>, Stack<T>, stb...)
 	--- Program.cs

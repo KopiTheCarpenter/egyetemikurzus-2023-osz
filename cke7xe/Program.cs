@@ -26,9 +26,13 @@ internal class Program
             switch (selectedOption)
             {
                 case 0: hengerController.WriteHengersToFile(hengerek, workingDirectory, fileName); break;
+                case 10: Console.Clear(); break;
                 case 1: hengerek.Add(menuController.MenuCreateHenger()); break;
-                case 2: menuController.MenuUpdateHenger(1);break;
-                case 3: hengerController.FindHengerWithBiggestAtmero(hengerek); break;
+                case 2: menuController.MenuUpdateHenger();break;
+                case 3: menuController.MenuListHengers(hengerek); break;
+                case 4: hengerController.FindHengerWithBiggestAtmero(hengerek); break;
+                case 5: hengerController.GenerateReportCountByAtmero(hengerek,workingDirectory);break;
+                case 6: menuController.MenuFindHengerAndWriteToFile(hengerController,workingDirectory); break;
             }
         }
 
