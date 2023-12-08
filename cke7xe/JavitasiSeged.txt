@@ -1,0 +1,19 @@
+﻿1-1 példa adott funkciót hol használtam.
+
+Legyen benne kivételkezelés (try-catch)
+Legalább a képenyőre írjon ki hibaüzeneteket
+	--- Controller/HengerController.cs --WriteHengersToFile()
+
+adat olvasása fájlból szerializáció segítségével (pl.: Adat betöltés és/vagy mentés JSON/XML fájlból/fájlba)
+	--- Controller/HengerController.cs --WriteHengersToFile()
+
+legyen benne saját immutable type (pl.: record class)
+	--- Model/Henger.cs
+
+legyen benne LINQ segítségével: szűrés(where), csoportosítás(group by), rendezés(order by), agregáció(Pl.: Min(), Max(), First(), FirstOrDefault, Average(), stb...) közül legalább kettő
+	---  
+
+legyen benne generikus kollekció (pl.: List<T>, Stack<T>, stb...)
+	--- Program.cs
+
+legyen benne aszinkron rész (async és Task)
