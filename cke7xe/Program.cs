@@ -28,7 +28,7 @@ internal class Program
                 case 1: hengerek.Add(menuController.MenuCreateHenger()); break;
                 case 2: menuController.MenuUpdateHenger(hengerek);break;
                 case 3: menuController.MenuListHengers(hengerek); break;
-                case 4: hengerController.FindHengerWithBiggestAtmero(hengerek); break;
+                case 4: Console.WriteLine("\nLegnagyobb átmérő: {0}\n", hengerController.FindHengerWithBiggestAtmero(hengerek)); break;
                 case 5: hengerController.GenerateReportCountByAtmero(hengerek,workingDirectory);break;
                 case 6: { 
                         int id = menuController.QuestionWhichHengerToWriteToFile();
@@ -38,6 +38,7 @@ internal class Program
                             hengerController.WriteSelectedHengerToFile(h, workingDirectory);
                         }
                     } break;
+                default: Console.WriteLine("\nNem létezik ilyen menüpont\n"); break;
             }
         }
         hengerController.WriteHengersToFile(hengerek, workingDirectory, fileName);
