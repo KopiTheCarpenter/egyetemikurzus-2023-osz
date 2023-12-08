@@ -85,7 +85,7 @@ namespace cke7xe.Controller
                 //IO Pokemon
                 Console.WriteLine(e.Message);
             }
-            if (ret.Count > 0) _nextId = ret.Max(h => h.Id);
+            if (ret.Count > 0) _nextId = ret.Max(h => h.Id)+1;
             else _nextId = 1;
             return ret;
         }
@@ -94,6 +94,10 @@ namespace cke7xe.Controller
         {
             if (hengerek == null || hengerek.Count < 1) return null;
             return hengerek.Find(x => x.Id == id);
+        }
+        public int FindHengerWithBiggestAtmero(List<Henger> hengerek)
+        {
+            return hengerek.Max(x => x.Atmero);
         }
     }
 }
