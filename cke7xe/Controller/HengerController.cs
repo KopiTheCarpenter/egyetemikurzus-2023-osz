@@ -89,5 +89,11 @@ namespace cke7xe.Controller
             else _nextId = 1;
             return ret;
         }
+
+        public Henger? FindHengerById(int id, List<Henger> hengerek)
+        {
+            if (hengerek == null || hengerek.Count < 1) return null;
+            return hengerek.Find(x => x.Id == id);
+        }
     }
 }

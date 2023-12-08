@@ -7,5 +7,6 @@ namespace cke7xe.Controller
         public List<Henger> GenerateDemoHengers(int count);
         public void WriteHengersToFile(List<Henger> hengerek, string workingDirectory, string filename="hengerek.json");
         public List<Henger> ReadHengersFromFile(string workingDirectory, string filename = "hengerek.json");
+        public Henger? FindHengerById(int id, List<Henger> hengerek);
     }
 }
