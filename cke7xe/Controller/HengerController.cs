@@ -52,5 +52,41 @@ namespace cke7xe.Controller
                 Console.WriteLine(e.Message);
             }
         }
+
+        public List<Henger> ReadHengersFromFile(string workingDirectory, string filename = "hengerek.json")
+        {
+            List<Henger> ret = new List<Henger>();
+
+            try
+            {
+                using (var reader = File.OpenText(Path.Combine(workingDirectory, filename)))
+                {
+                    string? line = null;
+                    while ((line = reader.ReadLine()) != null)
+                    {
+                        if (line == "{")
+                        {
+                            string? temp = null;
+                            while ((temp = reader.ReadLine()) != "}")
+                            {
+                                line += temp.Trim();
+                            }
+                            line += "}";
+                        }
+                        Henger? h = JsonSerializer.Deserialize<Henger>(line, serializerOptions);
+                        if (h != null) ret.Add(h);
+                    }
+                }
+
+            }
+            catch (IOException e)
+            {
+                //IO Pokemon
+                Console.WriteLine(e.Message);
+            }
+            if (ret.Count > 0) _nextId = ret.Max(h => h.Id);
+            else _nextId = 1;
+            return ret;
+        }
     }
 }

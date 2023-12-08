@@ -1,5 +1,6 @@
 ﻿using cke7xe.Controller;
 using cke7xe.Model;
+using System.Net;
 
 internal class Program
 {
@@ -8,17 +9,24 @@ internal class Program
         IHengerController controller = new HengerController();
         string workingDirectory = QuestionWhereIsWorkDirectiory(AppContext.BaseDirectory);
         string fileName = QuestionWhatIsNameOfFile();
-        if (QuestionWantToGenerateDemoHengers()) {
-            List<Henger> hengerek = controller.GenerateDemoHengers(50);
-            controller.WriteHengersToFile(hengerek, workingDirectory);
+        List<Henger>? hengerek;
+        //hengerek = controller.GenerateDemoHengers(50);
+        //controller.WriteHengersToFile(hengerek, workingDirectory, fileName);
+        if (QuestionWantToGenerateDemoHengers())
+        {
+            hengerek = controller.GenerateDemoHengers(50);
+        }
+        else
+        {
+            hengerek = controller.ReadHengersFromFile(workingDirectory, fileName);
         }
     }
     static bool QuestionWantToGenerateDemoHengers()
     {
         Console.Clear();
-        Console.WriteLine("Generáljon a program demo hengereket?");
-        Console.WriteLine("0 - nem");
-        Console.WriteLine("1 - igen");
+        Console.WriteLine("Generáljon a program demo hengereket vagy olvassa be a megadott fájlból?");
+        Console.WriteLine("0 - Fájlból olvasás");
+        Console.WriteLine("1 - Demo Generálás");
         return Console.ReadLine() == "1";
 
     }
