@@ -10,7 +10,7 @@ namespace cke7xe.Controller
         {
             return _nextId++;
         }
-        JsonSerializerOptions serializerOptions = new JsonSerializerOptions
+        readonly JsonSerializerOptions serializerOptions = new JsonSerializerOptions
         {
             WriteIndented = true
         };
@@ -69,6 +69,7 @@ namespace cke7xe.Controller
                             string? temp = null;
                             while ((temp = reader.ReadLine()) != "}")
                             {
+                                if(temp != null)
                                 line += temp.Trim();
                             }
                             line += "}";
