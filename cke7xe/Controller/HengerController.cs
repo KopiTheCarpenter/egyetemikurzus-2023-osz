@@ -99,5 +99,28 @@ namespace cke7xe.Controller
         {
             return hengerek.Max(x => x.Atmero);
         }
+        public void GenerateReportCountByAtmero(List<Henger> hengerek, string workingDirectory, string filename ="CountByAtmeroRiport.txt") {
+            try
+            {
+                string filePath = Path.Combine(workingDirectory, filename);
+                using (StreamWriter writer = File.CreateText(filePath))
+                {
+                    foreach (var line in hengerek.GroupBy(h => h.Atmero)
+                        .Select(group => new {
+                            Atmero = group.Key,
+                            Count = group.Count()
+                        })
+                        .OrderBy(x => x.Atmero))
+                    {
+                        writer.WriteLine($"{line.Atmero}cm: {line.Count}");
+                    }
+                }
+            }
+            catch (IOException e)
+            {
+                //IO Pokemon
+                Console.WriteLine(e.Message);
+            }
+        }
     }
 }

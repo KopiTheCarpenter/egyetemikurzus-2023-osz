@@ -9,5 +9,6 @@ namespace cke7xe.Controller
         public List<Henger> ReadHengersFromFile(string workingDirectory, string filename = "hengerek.json");
         public Henger? FindHengerById(int id, List<Henger> hengerek);
         public int FindHengerWithBiggestAtmero(List<Henger> hengerek);
+        public void GenerateReportCountByAtmero(List<Henger> hengerek, string workingDirectory, string filename = "CountByAtmeroRiport.txt");
     }
 }
