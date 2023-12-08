@@ -9,7 +9,7 @@ namespace cke7xe.Controller
         public string QuestionWhatIsNameOfFile(string defaultFileName = "hengerek.json");
         public int Menu();
         public Henger MenuCreateHenger();
-        public Henger MenuUpdateHenger();
+        public void MenuUpdateHenger(List<Henger> hengers);
         public int QuestionWhichHengerToWriteToFile();
         public void MenuListHengers(List<Henger> hengers);
     }

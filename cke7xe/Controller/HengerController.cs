@@ -47,7 +47,6 @@ namespace cke7xe.Controller
                 //IO Pokemon
                 Console.WriteLine(e.Message);
             }
-
         }
         public void WriteHengersToFile(List<Henger> hengerek, string workingDirectory, string filename = "hengerek.json")
         {

@@ -105,9 +105,33 @@ namespace cke7xe.Controller
                 return ret;
             }
         }
-        public Henger MenuUpdateHenger()
+        public void MenuUpdateHenger(List<Henger> hengers)
         {
-            throw new NotImplementedException();
+            Console.WriteLine("Válasszon melyik hengert szeretnék modosítani:");
+            for (int i = 0; i < hengers.Count; i++)
+            {
+                Console.WriteLine($"{i} - {hengers[i]}");
+            }
+            int id = -1;
+            do
+            {
+                id = MyInputToIntParser(Console.ReadLine());
+            } while (id < 0);
+            Console.Clear ();
+            Console.WriteLine($"Henger Megnevezés({hengers[id].Megnevezes}):");
+            string? line = Console.ReadLine();
+            if (!string.IsNullOrWhiteSpace(line))
+            {
+                hengers[id].Megnevezes = line;
+            }
+            Console.WriteLine($"Henger Átmérője({hengers[id].Atmero}):");
+            int atmeroInput;
+            do
+            {
+                 atmeroInput= MyInputToIntParser(Console.ReadLine());
+                if (atmeroInput == -3) break;
+            } while (atmeroInput <0);
+            Console.WriteLine(hengers[id]);
         }
         public int QuestionWhichHengerToWriteToFile()
         {
