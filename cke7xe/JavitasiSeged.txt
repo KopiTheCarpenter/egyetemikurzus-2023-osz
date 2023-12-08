@@ -19,3 +19,4 @@ legyen benne generikus kollekció (pl.: List<T>, Stack<T>, stb...)
 	--- Program.cs
 
 legyen benne aszinkron rész (async és Task)
+	---  Controller/HengerController.cs WriteSelectedHengerToFile

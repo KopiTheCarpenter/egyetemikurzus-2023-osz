@@ -33,9 +33,10 @@ namespace cke7xe.Controller
         }
         public void WriteSelectedHengerToFile(Henger henger, string workingDirectory)
         {
+            if (henger == null) return;
             try
             {
-                string filePath = Path.Combine(workingDirectory, henger.Megnevezes, ".json");
+                string filePath = Path.Combine(workingDirectory, henger.Megnevezes+".json");
                 using (StreamWriter writer = File.CreateText(filePath))
                 {
                     writer.WriteLineAsync(JsonSerializer.Serialize(henger, serializerOptions));

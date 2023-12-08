@@ -10,7 +10,7 @@ namespace cke7xe.Controller
         public int Menu();
         public Henger MenuCreateHenger();
         public Henger MenuUpdateHenger();
-        public void MenuFindHengerAndWriteToFile(IHengerController hengerController, string workingDirectory);
+        public int QuestionWhichHengerToWriteToFile();
         public void MenuListHengers(List<Henger> hengers);
     }
 }

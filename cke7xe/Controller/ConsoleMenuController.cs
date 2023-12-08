@@ -73,7 +73,6 @@ namespace cke7xe.Controller
         }
         public int Menu()
         {
-            Console.Clear();
             Console.WriteLine("0 - Kilépés(Mentés felülírja meglévő fájlt)");
             Console.WriteLine("10 - Képernyő letakaritása");
             Console.WriteLine("1 - Henger Hozzáadása");
@@ -110,12 +109,17 @@ namespace cke7xe.Controller
         {
             throw new NotImplementedException();
         }
-
-        public void MenuFindHengerAndWriteToFile(IHengerController hengerController, string workingDirectory)
+        public int QuestionWhichHengerToWriteToFile()
         {
-            
-        }
 
+            Console.WriteLine("Adja meg a henger ID-jét:");
+            int id = -1;
+            do
+            {
+                id = MyInputToIntParser(Console.ReadLine());
+            } while (id < 0);
+            return id;
+        }
         public void MenuListHengers(List<Henger> hengers)
         {
             foreach (var item in hengers)
