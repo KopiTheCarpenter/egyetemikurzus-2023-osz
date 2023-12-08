@@ -43,7 +43,6 @@ namespace cke7xe.Controller
             else
                 return line;
         }
-
         public Henger MenuCreateHenger()
         {
             {
@@ -52,32 +51,61 @@ namespace cke7xe.Controller
                 Console.WriteLine("Henger Megnevezése:");
                 ret.Megnevezes = Console.ReadLine();
                 Console.WriteLine("Henger Átmerő:");
-                while (true)
+                do
                 {
-                    try
-                    {
-                        ret.Atmero = int.Parse(Console.ReadLine());
-                        ret.Id = HengerController.GetNextId();
-                        return ret;
-                    }
-                    catch (ArgumentNullException e)
-                    {
-                        Console.WriteLine(e.Message);
-                    }
-                    catch (ArgumentException e)
-                    {
-                        Console.WriteLine(e.Message);
-                    }
-                    catch (FormatException e)
-                    {
-                        Console.WriteLine(e.Message);
-                    }
-                    catch (OverflowException e)
-                    {
-                        Console.WriteLine(e.Message);
-                    }
-                }
+                    ret.Atmero = MyInputToIntParser(Console.ReadLine());
+                } while (ret.Atmero <0);
+                ret.Id = HengerController.GetNextId();
+                return ret;
             }
+        }
+
+        public int Menu()
+        {
+            Console.Clear();
+            Console.WriteLine("0 - Kilépés(Mentés felülírja meglévő fájlt)");
+            Console.WriteLine("1 - Henger Hozzáadása");
+            Console.WriteLine("2 - Henger Modosítása");
+            Console.WriteLine("3 - Legnagyobb Átmérő megkeresése");
+            int ret = -1;
+            do
+            {
+                ret = MyInputToIntParser(Console.ReadLine());
+            } while (ret <0);
+            return ret;
+
+        }
+        int MyInputToIntParser(string? input) {
+            try
+            {
+                return int.Parse(input);
+
+            }
+            catch (ArgumentNullException e)
+            {
+                Console.WriteLine(e.Message);
+                return -1;
+            }
+            catch (ArgumentException e)
+            {
+                Console.WriteLine(e.Message);
+                return -2;
+            }
+            catch (FormatException e)
+            {
+                Console.WriteLine(e.Message);
+                return -3;
+            }
+            catch (OverflowException e)
+            {
+                Console.WriteLine(e.Message);
+                return -4;
+            }
+        }
+
+        public Henger MenuUpdateHenger(int id)
+        {
+            throw new NotImplementedException();
         }
     }
 }

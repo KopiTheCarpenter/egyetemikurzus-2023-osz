@@ -20,6 +20,18 @@ internal class Program
         {
             hengerek = hengerController.ReadHengersFromFile(workingDirectory, fileName);
         }
+        int selectedOption = 0;
+        while ((selectedOption = menuController.Menu()) != 0)
+        {
+            switch (selectedOption)
+            {
+                case 0: hengerController.WriteHengersToFile(hengerek, workingDirectory, fileName); break;
+                case 1: hengerek.Add(menuController.MenuCreateHenger()); break;
+                case 2: menuController.MenuUpdateHenger(1);break;
+                case 3: hengerController.FindHengerWithBiggestAtmero(hengerek); break;
+            }
+        }
+
     }
 
 }
