@@ -38,7 +38,7 @@ namespace cke7xe.Controller
                 string filePath = Path.Combine(workingDirectory, henger.Megnevezes, ".json");
                 using (StreamWriter writer = File.CreateText(filePath))
                 {
-                    writer.WriteLine(JsonSerializer.Serialize(henger, serializerOptions));
+                    writer.WriteLineAsync(JsonSerializer.Serialize(henger, serializerOptions));
                 }
             }
             catch (IOException e)
