@@ -1,4 +1,6 @@
-﻿namespace cke7xe.Controller
+﻿using cke7xe.Model;
+
+namespace cke7xe.Controller
 {
     public class ConsoleMenuController : IMenuController
     {
@@ -40,6 +42,42 @@
                 return defaultFileName;
             else
                 return line;
+        }
+
+        public Henger MenuCreateHenger()
+        {
+            {
+                Henger ret = new Henger();
+                Console.Clear();
+                Console.WriteLine("Henger Megnevezése:");
+                ret.Megnevezes = Console.ReadLine();
+                Console.WriteLine("Henger Átmerő:");
+                while (true)
+                {
+                    try
+                    {
+                        ret.Atmero = int.Parse(Console.ReadLine());
+                        ret.Id = HengerController.GetNextId();
+                        return ret;
+                    }
+                    catch (ArgumentNullException e)
+                    {
+                        Console.WriteLine(e.Message);
+                    }
+                    catch (ArgumentException e)
+                    {
+                        Console.WriteLine(e.Message);
+                    }
+                    catch (FormatException e)
+                    {
+                        Console.WriteLine(e.Message);
+                    }
+                    catch (OverflowException e)
+                    {
+                        Console.WriteLine(e.Message);
+                    }
+                }
+            }
         }
     }
 }
